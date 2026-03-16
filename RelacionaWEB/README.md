@@ -4,7 +4,7 @@
 
 Este projeto consiste em um site de relacionamentos no qual o sistema permite que usuários se cadastrem, realizem login, e preencham um perfil com perguntas pessoais para encontrar matches.
 
-O site utiliza integração com APIs externas para melhorar a experiência do usuário: a API dos Correios para preenchimento automático do endereço via CEP, e uma API em Node.js para consultar dados via CPF.
+O site utiliza integração com APIs externas para melhorar a experiência do usuário: a API dos Correios para preenchimento automático do endereço via CEP, e uma API em Node.js para consultar dados via CPF se o cadastro já existir.
 
 ## Tecnologias utilizadas
 
@@ -27,24 +27,12 @@ O site utiliza integração com APIs externas para melhorar a experiência do us
 ## Funcionalidades principais
 
 - Cadastro de usuário com preenchimento automático de endereço via CEP e CPF.  
-- Consulta de dados do usuário via CPF usando API Node.js.  
+- Consulta de dados do usuário ao efetuar o login via CPF usando API Node.js.  
 - Perguntas de perfil para encontrar pares.  
 - Interface responsiva e agradável.  
 - Mensagens de erro amigáveis junto aos campos do formulário.  
 
-## Como executar
-
-1. Configure o banco de dados PostgreSQL usando o pgAdmin 4 com o script fornecido.
-
-2. Importe o projeto no NetBeans IDE.
-
-3. Ajuste as configurações do banco de dados (usuário, senha, URL) no projeto.
-
-4. Inicie o servidor local (Tomcat, GlassFish, etc.) pelo NetBeans.
-
-5. Acesse o site no navegador via localhost.
-
-## Como usar
+## Como usar o site
 
 - Preencha o formulário de cadastro com os dados solicitados.  
 - Utilize o campo CPF para buscar dados existentes (se cadastrados).  
@@ -71,6 +59,6 @@ O projeto segue o padrão MVC com separação entre as camadas de modelo, visão
 - Melhorar a segurança com validação avançada e proteção contra ataques.  
 - Expandir a experiência do usuário com páginas de perfil, navegação e menu.  
 
-## Autores
+## Autor
 
 - Matheus Sant’Ana Fuckner Clementino
