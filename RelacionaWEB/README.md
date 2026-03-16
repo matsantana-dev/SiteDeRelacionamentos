@@ -74,4 +74,3 @@ O projeto segue o padrão MVC com separação entre as camadas de modelo, visão
 ## Autores
 
 - Matheus Sant’Ana Fuckner Clementino
-- Ana Clara Maranho Globleckner Silva
