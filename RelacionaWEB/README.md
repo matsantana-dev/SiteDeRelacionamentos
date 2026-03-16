@@ -18,11 +18,11 @@ O site utiliza integração com APIs externas para melhorar a experiência do us
 
 ## Como executar o projeto
 
-1. Configure o banco de dados PostgreSQL com o script disponível na pasta `database` (se aplicável).  
+1. Configure o banco de dados PostgreSQL com o script disponível na pasta `SQL` (se aplicável).  
 2. Importe o projeto no NetBeans.  
 3. Configure o servidor (Tomcat ou outro) para rodar o projeto.  
 4. Garanta que a API Node.js esteja rodando localmente na porta 3000.  
-5. Acesse `http://localhost:8080/Trab2_2025/cadastrar.html` para abrir o formulário de cadastro.  
+5. Acesse `http://localhost:8080/RelacionaWEB/cadastrar.html` para abrir o formulário de cadastro.  
 
 ## Funcionalidades principais
 
@@ -74,4 +74,3 @@ O projeto segue o padrão MVC com separação entre as camadas de modelo, visão
 ## Autores
 
 - Matheus Sant’Ana Fuckner Clementino
-- Ana Clara Maranho Globleckner Silva
