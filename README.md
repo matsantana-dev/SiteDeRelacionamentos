@@ -1,2 +1,2 @@
-# SiteDeRelacionamentos
-Um site de Relacionamentos para testar compatibilidade de indivíduos
+# RelacionaWEB
+Um site de Relacionamentos para testar compatibilidade de indivíduos.
