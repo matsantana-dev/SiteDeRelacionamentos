@@ -18,7 +18,7 @@ O site utiliza integração com APIs externas para melhorar a experiência do us
 
 ## Como executar o projeto
 
-1. Configure o banco de dados PostgreSQL com o script disponível na pasta `database` (se aplicável).  
+1. Configure o banco de dados PostgreSQL com o script disponível na pasta `SQL` (se aplicável).  
 2. Importe o projeto no NetBeans.  
 3. Configure o servidor (Tomcat ou outro) para rodar o projeto.  
 4. Garanta que a API Node.js esteja rodando localmente na porta 3000.  
