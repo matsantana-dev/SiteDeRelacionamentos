@@ -1,0 +1,101 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 22 de mai. de 2025, 16:40:17
+    Author     : mathe
+*/
+
+.tabela-usuarios {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background-color: #fff;
+}
+
+.tabela-usuarios thead tr {
+  background-color: #007acc;
+  color: white;
+  text-align: left;
+  font-weight: 600;
+}
+
+.tabela-usuarios th, 
+.tabela-usuarios td {
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+}
+
+.tabela-usuarios tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.tabela-usuarios tbody tr:hover {
+  background-color: #d6eaff;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .tabela-usuarios,
+  .tabela-usuarios thead,
+  .tabela-usuarios tbody,
+  .tabela-usuarios th,
+  .tabela-usuarios td,
+  .tabela-usuarios tr {
+    display: block;
+  }
+
+  .tabela-usuarios thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .tabela-usuarios tr {
+    margin-bottom: 15px;
+    border-bottom: 2px solid #007acc;
+  }
+
+  .tabela-usuarios td {
+    border: none;
+    position: relative;
+    padding-left: 50%;
+    text-align: left;
+  }
+
+  .tabela-usuarios td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 15px;
+    top: 10px;
+    font-weight: 700;
+    color: #007acc;
+    white-space: nowrap;
+  }
+}
+
+.detalhes {
+  display: none;
+  background-color: #eef6fc;
+  font-size: 0.9em;
+  color: #333;
+}
+
+.btn-detalhes {
+  cursor: pointer;
+  padding: 5px 10px;
+  background-color: #007acc;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease;
+}
+
+.btn-detalhes:hover {
+  background-color: #005fa3;
+}

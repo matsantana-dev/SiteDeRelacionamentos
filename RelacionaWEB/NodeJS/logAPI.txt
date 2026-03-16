@@ -1,0 +1,6 @@
+Log de Registro de uso da API: 
+27/05/2025, 10:22:49: IP = ::ffff:127.0.0.1 -> Encontrou {"cpf":"12345678902","senha":"senha2","login":"lucas","nome":"Lucas Silva","cep":"12345678","rua":"Rua A","bairro":"Centro","cidade":"São Paulo","numero":"101","r1":"1","r2":"2","r3":"4"}
+27/05/2025, 10:24:02: IP = ::ffff:127.0.0.1 -> Encontrou {"cpf":"12345678902","senha":"senha2","login":"lucas","nome":"Lucas Silva","cep":"12345678","rua":"Rua A","bairro":"Centro","cidade":"São Paulo","numero":"101","r1":"1","r2":"2","r3":"4"}
+04/06/2025, 14:11:49: IP = ::ffff:127.0.0.1 -> Encontrou {"cpf":"12345678903","senha":"senha3","login":"ana","nome":"Ana Clara","cep":"87654321","rua":"Rua B","bairro":"Jardins","cidade":"Rio de Janeiro","numero":"202","r1":"3","r2":"1","r3":"4"}
+04/06/2025, 14:14:03: IP = ::ffff:127.0.0.1 -> Encontrou {"cpf":"12345678901","senha":"senha1","login":"l","nome":"n","cep":"12345678","rua":"r","bairro":"b","cidade":"c","numero":"n","r1":"1","r2":"3","r3":"4"}
+30/06/2025, 14:37:16: IP = ::ffff:127.0.0.1 -> Encontrou {"cpf":"12345678904","senha":"senha4","login":"joao","nome":"João Pereira","cep":"11223344","rua":"Av. Brasil","bairro":"Liberdade","cidade":"Belo Horizonte","numero":"303","r1":"2","r2":"3","r3":"4"}

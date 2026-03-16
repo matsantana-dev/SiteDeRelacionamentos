@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="css/cadastro.css" rel="stylesheet" />
+    <script type="text/javascript">
+        function limpa_formulario_cep() {
+            document.getElementById('idCep').value = "";
+            document.getElementById('idRua').value = "";
+            document.getElementById('idBairro').value = "";
+            document.getElementById('idCidade').value = "";
+        }
+        
+        function formataCep(cep) {
+            cep = cep.replace(/\D/g, "");
+            cep = cep.slice(0,8);
+            cep = cep.replace(/(\d{5})(\d)/, "$1-$2");
+            return cep;
+        }
+        
+        function buscaCep() {
+            var cep = document.getElementById('idCep').value.trim().replace(/\D/g, '');
+
+            //Verifica se campo cep possui valor informado.
+            if (cep.length > 0) {
+                //Expressão regular para validar o CEP.
+                var validacep = /^[0-9]{8}$/;
+                //Valida o formato do CEP.
+                if (validacep.test(cep)) {
+                    //Consulta o webservice viacep.com.br/
+                    fetch("https://viacep.com.br/ws/" + cep + "/json/", {
+                        method: 'GET',
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    })
+                        .then(response => response.json())
+                        .then(d => {
+                            if (d.erro) {
+                                limpa_formulario_cep();
+                                document.getElementById("idCep").value = cep;
+                                document.getElementById('idDiv').innerText = "CEP não encontrado.";
+                            } else {
+                                document.getElementById('idRua').value = d.logradouro;
+                                document.getElementById('idBairro').value = d.bairro;
+                                document.getElementById('idCidade').value = d.localidade;
+                                document.getElementById("idDiv").innerHTML = "";    
+
+                            }
+                        })
+                        .catch(error => {
+                            document.getElementById("idDiv").innerHTML = "Erro ao listar:" + error;
+                            limpa_formulario_cep();
+                        });
+
+                }
+                else {
+                    limpa_formulario_cep();
+                    alert("Formato de CEP inválido.");
+                }
+            }
+            else{
+                limpa_formulario_cep();
+            }
+        }
+        
+        function formataCpf(cpf) {
+            cpf = cpf.replace(/\D/g, "");
+            cpf = cpf.slice(0,11);
+            
+            cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2");
+            cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2");
+            cpf = cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+            return cpf;
+        }
+        
+        function marcaCampo(nomeCampo, valor) {
+            const campo = document.getElementsByName(nomeCampo);
+            for (let i = 0; i < campo.length; i++) {
+                if (campo[i].value === valor) {
+                campo[i].checked = true;
+                break;
+                }
+            }
+        }
+        
+        function buscaCpf() {
+            const cpf = document.getElementById('idCpf').value.trim().replace(/\D/g, '');
+
+            if (cpf.length === 0) return;
+                fetch("http://localhost:3000/Usuario/" + cpf)
+                    .then(response => {
+                        if (!response.ok) {
+                            console.log("Usuário não encontrado.");
+                            return null;
+                        }
+                    return response.json();
+                    })
+                    .then(data => {
+                    if (data) {
+                        document.querySelector('[name="txtNome"]').value = data.dados.nome;
+                        document.querySelector('[name="txtLogin"]').value = data.dados.login;
+                        document.getElementById('idCep').value = data.dados.cep;
+                        document.getElementById('idRua').value = data.dados.rua;
+                        document.querySelector('[name="txtNum"]').value = data.dados.numero;
+                        document.getElementById('idBairro').value = data.dados.bairro;
+                        document.getElementById('idCidade').value = data.dados.cidade;
+                        marcaCampo("txtR1", data.dados.r1);
+                        marcaCampo("txtR2", data.dados.r2);
+                        marcaCampo("txtR3", data.dados.r3);
+                    }
+                    })
+                .catch(error => {
+                    console.error("Erro ao buscar CPF:", error);
+                });
+        }
+        
+    </script>
+</head>
+<body>
+    <form action="Cadastrar" method="post">
+    <fieldset>
+        <legend>Crie seu Perfil!</legend>
+        <a>Já possui um?</a>
+    <span class="btn-cadastrolog" onclick="window.location.href='login.html'" title="Entre na sua conta">Entre</span></br></br>
+
+        <fieldset>
+            <legend>Informações Pessoais</legend>
+        CPF:</br> <input type="text" name="txtCPF" id="idCpf" autocomplete="off" required oninput="this.value = formataCpf(this.value)" onblur="buscaCpf()" /> </br> </br>
+        Nome: <input type="text" name="txtNome" id="idNome" autocomplete="off" required /> </br> </br>
+        Login: <input type="text" name="txtLogin" id="idLogin" autocomplete="off" required /> </br> </br>
+        Senha: <input type="password" name="txtSenha" required autocomplete="new-password" /> </br> </br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Endereço</legend>
+        CEP: </br> <input type="text" name="txtCEP" id="idCep" autocomplete="off" required oninput="this.value = formataCep(this.value)" onblur="buscaCep()"/> </br> </br>
+        Rua: </br> <input type="text" name="txtRua" id="idRua" required /> </br> </br>
+        Número: </br> <input type="text" name="txtNum" autocomplete="off" required /> </br> </br>
+        Bairro: </br> <input type="text" name="txtBairro" id="idBairro" required /> </br> </br>
+        Cidade: </br> <input type="text" name="txtCidade" id="idCidade" required />
+        <div id="idDiv"></div>
+        </fieldset>
+
+    <fieldset>
+        <legend title="Encontre seu Match">Perguntas:</legend>
+        <p> 1) Qual seu esporte preferido? </p> </br>
+        <div class="radiog">
+        <input type="radio" id="r1bocha" name="txtR1" value="1" required>
+        <label for="r1bocha" class="radiolabel">Bocha</label>
+        <input type="radio" id="r1curling" name="txtR1" value="2">
+        <label for="r1curling" class="radiolabel">Curling</label>
+        <input type="radio" id="r1boxe" name="txtR1" value="3">
+        <label for="r1boxe" class="radiolabel">Boxe Aquático</label>
+        <input type="radio" id="r1frescobol" name="txtR1" value="4">
+        <label for="r1frescobol" class="radiolabel">Frescobol</label>
+        </div>
+        <p> 2) Qual sua comida favorita? </p> </br>
+        <div class="radiog">
+        <input type="radio" id="r2arroz" name="txtR2" value="1" required>
+         <label for="r2arroz" class="radiolabel">Arroz</label>
+        <input type="radio" id="r2abobrinha" name="txtR2" value="2">
+        <label for="r2abobrinha" class="radiolabel">Abobrinha</label>
+        <input type="radio" id="r2abacate" name="txtR2" value="3">
+        <label for="r2abacate" class="radiolabel">Abacate</label>
+        <input type="radio" id="r2almeirao" name="txtR2" value="4">
+        <label for="r2almeirao" class="radiolabel">Almeirão</label>
+        </div>
+        <p> 3) Qual seu carro preferido? </p> </br>
+        <div class="radiog">
+        <input type="radio" id="r3dkv" name="txtR3" value="1" required>
+        <label for="r3dkv" class="radiolabel">DKV</label>
+        <input type="radio" id="r3tuktuk" name="txtR3" value="2">
+        <label for="r3tuktuk" class="radiolabel">Tuk Tuk</label>
+        <input type="radio" id="r3romiseta" name="txtR3" value="3">
+        <label for="r3romiseta" class="radiolabel">Romiseta</label>
+        <input type="radio" id="r3landau" name="txtR3" value="4">
+        <label for="r3landau" class="radiolabel">Landau</label>
+        </div>
+    </fieldset> </br>
+
+    <input type="submit" name="b1" value="Cadastrar" title="Crie sua conta"/> </br> </br>
+    </fieldset>
+    </form>
+
+    <footer>
+        <div class="contato">
+            <p><strong>Contatos:</strong></p>
+            <p>
+                <i class="fab fa-whatsapp"></i> WhatsApp: 
+                <a href="https://wa.me/19995435781" target="_blank">(19) 99543-5781</a><br>
+        
+                <i class="fas fa-envelope"></i> E-mail: 
+                <a href="mailto:relacionaweb@gmail.com">relacionaweb@gmail.com</a><br>
+        
+                <i class="fab fa-instagram"></i> Instagram: 
+                <a href="https://instagram.com/relacionaweb" target="_blank">@relacionaweb</a>
+            </p>
+        </div> </br>
+        <p>© Feito por Matheus Sant'Ana e Ana Clara - 3° Info - Turma 1 ©</p></br>
+    </footer>
+</body>
+</html>

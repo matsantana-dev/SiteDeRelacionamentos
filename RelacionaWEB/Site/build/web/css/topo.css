@@ -1,0 +1,79 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 16 de mai. de 2025, 16:11:10
+    Author     : Windows
+*/
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #cd5c5c;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 60px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  margin-top: 25px;
+  height: 100px;
+  width: 100px;
+  border-radius: 5px;
+}
+
+.nome {
+  color: white;
+  text-decoration: none;
+  margin-top: 25px;
+  font-size: 1.2em;
+  font-weight: 700;
+  flex-grow: 1;
+  cursor: default;
+}
+
+.botao {
+  background-color: white;
+  text-decoration: none;
+  color: #cd5c5c;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background-color 0.3s ease;
+}
+
+.botao:hover {
+  background-color: #cd5c5c;
+  color: white;
+}
+
+.sobre {
+  max-width: 1000px;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 50px 40px;
+  margin: 50px auto;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(214, 51, 132, 0.2);
+  text-align: center;
+  color: #444;
+  font-size: 1.1em;
+  line-height: 1.8;
+}
+
+.sobre h3 {
+  color: #cd5c5c;
+  font-size: 2em;
+  margin-bottom: 25px;
+  font-weight: 800;
+}
